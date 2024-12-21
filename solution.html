@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This is some text.
+  </div>
+  <script>
+    // Safely accessing a DOM element
+    let element = document.getElementById('myDiv');
+    if (element) {
+      element.style.display = 'none';
+    } else {
+      console.error('Element not found!');
+    }
+
+    // Sanitizing user input before using innerHTML (example using textContent)
+    let userInput = prompt("Enter some text:");
+    // Sanitize user input (basic example - more robust sanitization is often needed)
+    let sanitizedInput = userInput.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    document.getElementById('myDiv').textContent = sanitizedInput; 
+  </script>
+</body>
+</html>
